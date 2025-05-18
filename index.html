@@ -6,19 +6,25 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <title>XZuyaX's HUB</title>
+  <style>
+    .section { display: none; }
+    .section.active { display: block; }
+    nav a.active { color: #00ccff; font-weight: bold; }
+  </style>
 </head>
 <body>
   <header>
     <a href="#" class="logo">XZuyaX's HUB</a>
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#">Script</a>
-      <a href="#">Showcase</a>
-      <a href="#">Contact</a>
+      <a href="#" class="active" onclick="showSection('home', this)">Home</a>
+      <a href="#" onclick="showSection('script', this)">Script</a>
+      <a href="#" onclick="showSection('showcase', this)">Showcase</a>
+      <a href="#" onclick="showSection('contact', this)">Contact</a>
     </nav>
   </header>
 
-  <section class="home">
+  <!-- HOME -->
+  <section id="home" class="section active">
     <div class="home-img">
       <img src="main.gif" alt="Foto Profil" />
     </div>
@@ -35,5 +41,47 @@
       <a href="#" class="btn">Donate Me!</a>
     </div>
   </section>
+
+  <!-- SCRIPT -->
+  <section id="script" class="section">
+    <div class="content">
+      <h2>My Roblox Scripts</h2>
+      <ul>
+        <li><strong>Blade Ball GUI</strong> - <a href="#">Download</a></li>
+        <li><strong>Auto Farm</strong> - <a href="#">Download</a></li>
+        <li><strong>Teleport Script</strong> - <a href="#">Download</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section id="showcase" class="section">
+    <div class="content">
+      <h2>Script Showcase</h2>
+      <p>Check out some cool stuff I’ve built!</p>
+      <img src="showcase1.gif" alt="Showcase 1" width="300" />
+      <img src="showcase2.gif" alt="Showcase 2" width="300" />
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="content">
+      <h2>Contact Me</h2>
+      <p>Email: example@email.com</p>
+      <p>Discord: XZuyaX#1234</p>
+      <p>Instagram: <a href="#">@xzuya.dev</a></p>
+    </div>
+  </section>
+
+  <script>
+    function showSection(id, el) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
 </body>
 </html>
