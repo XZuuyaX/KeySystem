@@ -3,72 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>XZuyaX's HUB - Script & Donation Links</title>
+  <title>XZuyaX's HUB - Scripts & Donations</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-<script>
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabs = document.querySelectorAll('.tab-content');
-
-  tabButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Hapus semua aktif
-      tabButtons.forEach(b => b.classList.remove('active'));
-      tabs.forEach(t => t.classList.remove('active'));
-
-      // Aktifkan tab yg diklik
-      btn.classList.add('active');
-      const selectedTab = btn.getAttribute('data-tab');
-      document.getElementById(selectedTab).classList.add('active');
-    });
-  });
-
-  // Script viewer
-  const scripts = {
-    autoClicker: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_autoclicker"))()`,
-    keyGenerator: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_keygen"))()`,
-    teleport: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_teleport"))()`,
-  };
-
-  function showCode(key) {
-    const codeArea = document.getElementById("code-area");
-    codeArea.textContent = scripts[key] || "Code not found.";
-  }
-
-  function copyCode() {
-    const codeArea = document.getElementById("code-area");
-    navigator.clipboard.writeText(codeArea.textContent).then(() => {
-      alert("Code copied to clipboard!");
-    });
-  }
-</script>
-    
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #1f1f1f, #0d0d0d);
       color: #eee;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
     header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      background: #1f1f1f;
+      padding: 1rem;
       text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 1.8rem;
+      font-weight: bold;
       color: #00cfff;
-      text-shadow: 0 0 8px #00cfff;
-      user-select: none;
     }
     nav {
       display: flex;
-      background: rgba(0, 0, 0, 0.5);
+      background: #222;
       justify-content: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
     }
     nav button {
       background: none;
@@ -76,9 +32,8 @@
       padding: 1rem 2rem;
       color: #aaa;
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: color 0.3s, border-bottom 0.3s;
-      border-bottom: 3px solid transparent;
+      font-size: 1rem;
+      transition: color 0.3s;
     }
     nav button.active,
     nav button:hover {
@@ -86,14 +41,9 @@
       border-bottom: 3px solid #00cfff;
     }
     main {
-      flex: 1;
       padding: 2rem;
-      max-width: 720px;
+      max-width: 700px;
       margin: auto;
-      background: rgba(0,0,0,0.45);
-      border-radius: 10px;
-      box-shadow: 0 0 25px #00cfff40;
-      user-select: text;
     }
     .tab-content {
       display: none;
@@ -102,78 +52,49 @@
       display: block;
     }
     pre {
-      background: #222;
+      background: #333;
       padding: 1rem;
-      border-radius: 6px;
+      border-radius: 5px;
       overflow-x: auto;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      white-space: pre-wrap;
-      word-break: break-word;
       user-select: all;
+      font-size: 0.9rem;
     }
     .copy-btn {
       background: #00cfff;
       border: none;
       color: black;
       padding: 0.4rem 1rem;
-      border-radius: 5px;
+      border-radius: 4px;
       cursor: pointer;
-      margin-top: 0.7rem;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-    .copy-btn:hover {
-      background: #0099cc;
+      margin-top: 0.5rem;
     }
     .links-list button {
-      background: none;
-      border: 2px solid #00cfff;
-      color: #00cfff;
-      padding: 0.5rem 1rem;
+      background: #292929;
+      color: #eee;
+      border: 1px solid #444;
+      padding: 0.5rem;
       margin: 0.3rem 0;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
       width: 100%;
+      cursor: pointer;
+      border-radius: 4px;
       text-align: left;
-      transition: background 0.3s, color 0.3s;
     }
-    .links-list button:hover {
-      background: #00cfff;
-      color: black;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 0.6rem 0;
+    .icon-link {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 10px;
+      margin: 0.5rem 0;
     }
-    ul li a {
+    .icon-link img {
+      width: 24px;
+      height: 24px;
+    }
+    a {
       color: #00cfff;
       text-decoration: none;
-      word-break: break-all;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s;
     }
-    ul li a:hover {
-      color: #0099cc;
-    }
-    /* Icons */
-    .icon {
-      width: 22px;
-      height: 22px;
-      fill: #00cfff;
-      flex-shrink: 0;
-      transition: fill 0.3s;
-    }
-    ul li a:hover .icon {
-      fill: #0099cc;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -181,8 +102,8 @@
   <header>XZuyaX's HUB</header>
   <nav>
     <button class="tab-btn active" data-tab="scripts">Script Links</button>
-    <button class="tab-btn" data-tab="donation">Donation Links</button>
-    <button class="tab-btn" data-tab="social">Social Media Links</button>
+    <button class="tab-btn" data-tab="donation">Donation</button>
+    <button class="tab-btn" data-tab="social">Social Media</button>
   </nav>
 
   <main>
@@ -190,47 +111,99 @@
     <section id="scripts" class="tab-content active">
       <h2>Script List</h2>
       <div class="links-list">
-        <button onclick="showCode('autoClicker')">Auto Clicker Script</button>
-        <button onclick="showCode('keyGenerator')">Key Generator Script</button>
-        <button onclick="showCode('teleport')">Teleport Script</button>
+        <button onclick="showCode('script1')">Auto Clicker Script</button>
+        <button onclick="showCode('script2')">Key Generator Script</button>
+        <button onclick="showCode('script3')">Teleport Script</button>
       </div>
-
-      <div id="code-display" style="margin-top: 1.5rem;">
+      <div id="code-display" style="margin-top: 1rem;">
         <h3>Script Code</h3>
-        <pre id="code-area">Click a script button above to view code.</pre>
+        <pre id="code-area">Click one of the buttons above to view the script.</pre>
         <button class="copy-btn" onclick="copyCode()">Copy Code</button>
       </div>
     </section>
 
     <!-- Donation Tab -->
     <section id="donation" class="tab-content">
-      <h2>Donation Links</h2>
-      <ul>
-        <li>
-          <a href="https://saweria.co/xzuya" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            Saweria
-          </a>
-        </li>
-        <li>
-          <a href="https://trakteer.id/xzuya" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.9 1.26 5.5 3.28 7.3l1.54-1.54A6.96 6.96 0 015 12c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7a6.96 6.96 0 01-3.75-1.13l-1.54 1.54A9.977 9.977 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-            Trakteer
-          </a>
-        </li>
-        <li>
-          <a href="https://paypal.me/xzuya" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M9.25 6H6v12h3.1a4.2 4.2 0 005.05-4.7c.36-2.3-1.03-3.3-2.52-3.3H9.25zM21 12c0-3.32-2.68-6-6-6H8v12h7a6 6 0 006-6z"/></svg>
-            PayPal
-          </a>
-        </li>
-      </ul>
+      <h2>Support Me</h2>
+      <div class="icon-link">
+        <img src="https://img.icons8.com/color/48/saweria.png" alt="Saweria" />
+        <a href="https://saweria.co/xzuya" target="_blank">Saweria</a>
+      </div>
+      <div class="icon-link">
+        <img src="https://img.icons8.com/fluency/48/paypal.png" alt="PayPal" />
+        <a href="https://paypal.me/xzuya" target="_blank">PayPal</a>
+      </div>
+      <div class="icon-link">
+        <img src="https://cdn.trakteer.id/images/icons/favicon-32x32.png" alt="Trakteer" />
+        <a href="https://trakteer.id/xzuya" target="_blank">Trakteer</a>
+      </div>
     </section>
 
     <!-- Social Media Tab -->
     <section id="social" class="tab-content">
-      <h2>Social Media Links</h2>
-      <ul>
-        <li>
-          <a href="https://youtube.com/@xzuya" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6zM21.8 7.2c-.23-.87-.9-1.54-1.77-1.77C17.73 5 12 5 12 5s-5.73 0-7.99.43c-.87.23-1.54.9-1.77 1.77C2.74 9.5 2.74 12 2.74 12s0 2.5.5 4.8c.23.87.9 1.54 1.77 1.77C6.27 19 12 19 12 19s5.73 0 7.99-.43c.
+      <h2>Find Me On</h2>
+      <div class="icon-link">
+        <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube" />
+        <a href="https://youtube.com/@xzuya" target="_blank">YouTube</a>
+      </div>
+      <div class="icon-link">
+        <img src="https://img.icons8.com/color/48/tiktok--v1.png" alt="TikTok" />
+        <a href="https://tiktok.com/@xzuya" target="_blank">TikTok</a>
+      </div>
+      <div class="icon-link">
+        <img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram" />
+        <a href="https://instagram.com/xzuya" target="_blank">Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const scripts = {
+      script1: `-- Auto Clicker Script
+while true do
+    wait(0.1)
+    game:GetService("VirtualUser"):ClickButton1(Vector2.new())
+end`,
+      script2: `-- Key Generator Script
+function generateKey()
+    local key = ""
+    for i = 1, 16 do
+        key = key .. string.char(math.random(65, 90))
+    end
+    return key
+end
+print(generateKey())`,
+      script3: `-- Teleport Script
+local player = game.Players.LocalPlayer
+local teleportPos = Vector3.new(0, 50, 0)
+player.Character.HumanoidRootPart.CFrame = CFrame.new(teleportPos)`,
+    };
+
+    // Tabs logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        contents.forEach(c => c.classList.remove('active'));
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    function showCode(id) {
+      const codeArea = document.getElementById('code-area');
+      codeArea.textContent = scripts[id] || 'Script not found.';
+    }
+
+    function copyCode() {
+      const codeArea = document.getElementById('code-area').textContent;
+      navigator.clipboard.writeText(codeArea).then(() => {
+        alert('Code copied to clipboard!');
+      }).catch(() => {
+        alert('Failed to copy.');
+      });
+    }
+  </script>
+</body>
+</html>
