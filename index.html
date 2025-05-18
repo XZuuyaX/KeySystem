@@ -33,6 +33,8 @@
     const statusText = document.getElementById("status");
     const timerText = document.getElementById("timer");
 
+    let timerInterval = null;
+
     function generateKey() {
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
       let key = "";
@@ -46,27 +48,32 @@
       return key;
     }
 
-    function updateTimer() {
-      const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
-      const now = Date.now();
-      const diff = expiresAt - now;
-
-      if (diff <= 0) {
-        timerText.innerText = "Key expired. You can generate a new one.";
-        localStorage.removeItem("generatedKey");
-        localStorage.removeItem("keyExpiresAt");
-        generateBtn.disabled = false;
-        statusText.innerText = "";
-      } else {
-        const minutes = Math.floor(diff / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        timerText.innerText = `Key valid for: ${minutes}m ${seconds}s`;
-      }
+    function disableButtonFor(durationMs) {
+      generateBtn.disabled = true;
+      const expiresAt = Date.now() + durationMs;
+      localStorage.setItem("keyExpiresAt", expiresAt.toString());
+      startCountdown(expiresAt);
     }
 
-    function startCountdown() {
-      updateTimer();
-      setInterval(updateTimer, 1000);
+    function startCountdown(expiresAt) {
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        const now = Date.now();
+        const diff = expiresAt - now;
+
+        if (diff <= 0) {
+          clearInterval(timerInterval);
+          timerText.innerText = "Key expired. You can generate a new one.";
+          generateBtn.disabled = false;
+          localStorage.removeItem("generatedKey");
+          localStorage.removeItem("keyExpiresAt");
+          statusText.innerText = "";
+        } else {
+          const minutes = Math.floor(diff / 60000);
+          const seconds = Math.floor((diff % 60000) / 1000);
+          timerText.innerText = `Key valid for: ${minutes}m ${seconds}s`;
+        }
+      }, 1000);
     }
 
     generateBtn.addEventListener("click", () => {
@@ -74,31 +81,29 @@
       const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
 
       if (expiresAt && now < expiresAt) {
-        statusText.innerText = "You have already generated a key.";
+        statusText.innerText = "Please wait until your current key expires.";
         return;
       }
 
       const key = generateKey();
       navigator.clipboard.writeText(key).then(() => {
         statusText.innerText = `Key copied: ${key}`;
-        const expireTime = now + EXPIRATION_MINUTES * 60000;
         localStorage.setItem("generatedKey", key);
-        localStorage.setItem("keyExpiresAt", expireTime.toString());
-        generateBtn.disabled = true;
-        updateTimer();
+        disableButtonFor(EXPIRATION_MINUTES * 60000);
+      }).catch(() => {
+        statusText.innerText = "Gagal menyalin key.";
       });
     });
 
-    // On page load: check if already has key
-    const existingKey = localStorage.getItem("generatedKey");
-    const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
-    if (existingKey && Date.now() < expiresAt) {
-      statusText.innerText = `Key already copied: ${existingKey}`;
+    // On page load
+    const savedKey = localStorage.getItem("generatedKey");
+    const savedExpires = parseInt(localStorage.getItem("keyExpiresAt"), 10);
+    const now = Date.now();
+
+    if (savedKey && savedExpires && now < savedExpires) {
       generateBtn.disabled = true;
-      startCountdown();
-    } else {
-      localStorage.removeItem("generatedKey");
-      localStorage.removeItem("keyExpiresAt");
+      statusText.innerText = `Key already copied: ${savedKey}`;
+      startCountdown(savedExpires);
     }
   </script>
 </body>
