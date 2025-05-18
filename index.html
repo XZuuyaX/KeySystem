@@ -1,31 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Key Generator</title>
+  <meta charset="UTF-8" />
+  <title>XZuyaX's HUB Key Generator</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding-top: 80px; }
-    button {
-      padding: 12px 24px;
-      font-size: 18px;
-      cursor: pointer;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
+
+    header {
+      background: #1f1f1f;
+      width: 100%;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1.5px;
+    }
+
+    nav {
+      margin-top: 8px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #eee;
+      font-size: 1.6rem;
+      vertical-align: middle;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff3b3f;
+    }
+
+    nav a svg {
+      width: 28px;
+      height: 28px;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+
+    main {
+      margin-top: 50px;
+      background: #222;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(255, 59, 63, 0.4);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+    }
+
+    button {
+      background-color: #ff3b3f;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 28px;
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:disabled {
+      background-color: #aa2a2c;
+      cursor: not-allowed;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #d32f31;
+    }
+
     #status {
       margin-top: 20px;
-      font-size: 16px;
-      color: green;
+      font-size: 17px;
+      color: #7ef4a1;
+      min-height: 28px;
     }
+
     #timer {
-      margin-top: 10px;
-      color: red;
+      margin-top: 12px;
+      color: #f77;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      background: #1f1f1f;
+      width: 100%;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
     }
   </style>
 </head>
 <body>
-  <h1>Key Generator</h1>
-  <button id="generateBtn">Copy Key</button>
-  <div id="status"></div>
-  <div id="timer"></div>
+  <header>
+    <h1>XZuyaX's HUB Key Generator</h1>
+    <nav>
+      <a href="#" target="_blank" aria-label="YouTube Channel" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.998 2.998 0 0 0-2.11-2.115C19.629 3.5 12 3.5 12 3.5s-7.629 0-9.388.57a2.998 2.998 0 0 0-2.11 2.115A31.096 31.096 0 0 0 0 12a31.096 31.096 0 0 0 .502 5.814 2.998 2.998 0 0 0 2.11 2.115c1.759.57 9.388.57 9.388.57s7.629 0 9.388-.57a2.998 2.998 0 0 0 2.11-2.115A31.096 31.096 0 0 0 24 12a31.096 31.096 0 0 0-.502-5.814zM9.75 15.5v-7l6 3.5-6 3.5z"/></svg>
+      </a>
+      <a href="#" target="_blank" aria-label="TikTok Profile" title="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M12 2v10.87a3.494 3.494 0 0 1-3.5-3.5v-7.37H6v14.5a3.5 3.5 0 1 0 3.5 3.5v-9.12A4.494 4.494 0 0 0 12 16v-14z"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <button id="generateBtn">Copy Key</button>
+    <div id="status"></div>
+    <div id="timer"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 XZuyaX. All Rights Reserved.
+  </footer>
 
   <script>
     const EXPIRATION_MINUTES = 10;
@@ -91,7 +197,7 @@
         localStorage.setItem("generatedKey", key);
         disableButtonFor(EXPIRATION_MINUTES * 60000);
       }).catch(() => {
-        statusText.innerText = "Gagal menyalin key.";
+        statusText.innerText = "Failed to copy the key.";
       });
     });
 
