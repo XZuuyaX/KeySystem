@@ -1,209 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>XZuyaX's HUB - Scripts & Donations</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #1f1f1f, #0d0d0d);
-      color: #eee;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #1f1f1f;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #00cfff;
-    }
-    nav {
-      display: flex;
-      background: #222;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav button {
-      background: none;
-      border: none;
-      padding: 1rem 2rem;
-      color: #aaa;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    nav button.active,
-    nav button:hover {
-      color: #00cfff;
-      border-bottom: 3px solid #00cfff;
-    }
-    main {
-      padding: 2rem;
-      max-width: 700px;
-      margin: auto;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    pre {
-      background: #333;
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-      user-select: all;
-      font-size: 0.9rem;
-    }
-    .copy-btn {
-      background: #00cfff;
-      border: none;
-      color: black;
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-    .links-list button {
-      background: #292929;
-      color: #eee;
-      border: 1px solid #444;
-      padding: 0.5rem;
-      margin: 0.3rem 0;
-      width: 100%;
-      cursor: pointer;
-      border-radius: 4px;
-      text-align: left;
-    }
-    .icon-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0.5rem 0;
-    }
-    .icon-link img {
-      width: 24px;
-      height: 24px;
-    }
-    a {
-      color: #00cfff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Website</title>
 </head>
 <body>
-  <header>XZuyaX's HUB</header>
-  <nav>
-    <button class="tab-btn active" data-tab="scripts">Script Links</button>
-    <button class="tab-btn" data-tab="donation">Donation</button>
-    <button class="tab-btn" data-tab="social">Social Media</button>
-  </nav>
+    <header>
+        <a href="#" class="logo">Alex</a>
 
-  <main>
-    <!-- Scripts Tab -->
-    <section id="scripts" class="tab-content active">
-      <h2>Script List</h2>
-      <div class="links-list">
-        <button onclick="showCode('script1')">Auto Clicker Script</button>
-        <button onclick="showCode('script2')">Key Generator Script</button>
-        <button onclick="showCode('script3')">Teleport Script</button>
-      </div>
-      <div id="code-display" style="margin-top: 1rem;">
-        <h3>Script Code</h3>
-        <pre id="code-area">Click one of the buttons above to view the script.</pre>
-        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-      </div>
+        <nav>
+            <a href="#" class="active"> Home</a>
+            <a href="#" >Services</a>
+            <a href="#" >Skills</a>
+            <a href="#" >Education</a>
+            <a href="#" >Experience</a>
+            <a href="#" >Contact</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img src="main.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi, It's <span>Alex</span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus labore dolores esse. Odit similique doloribus tenetur doloremque, sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <a href="#" class="btn">Hire me</a>
+        </div>
     </section>
-
-    <!-- Donation Tab -->
-    <section id="donation" class="tab-content">
-      <h2>Support Me</h2>
-      <div class="icon-link">
-        <img src="https://img.icons8.com/color/48/saweria.png" alt="Saweria" />
-        <a href="https://saweria.co/xzuya" target="_blank">Saweria</a>
-      </div>
-      <div class="icon-link">
-        <img src="https://img.icons8.com/fluency/48/paypal.png" alt="PayPal" />
-        <a href="https://paypal.me/xzuya" target="_blank">PayPal</a>
-      </div>
-      <div class="icon-link">
-        <img src="https://cdn.trakteer.id/images/icons/favicon-32x32.png" alt="Trakteer" />
-        <a href="https://trakteer.id/xzuya" target="_blank">Trakteer</a>
-      </div>
-    </section>
-
-    <!-- Social Media Tab -->
-    <section id="social" class="tab-content">
-      <h2>Find Me On</h2>
-      <div class="icon-link">
-        <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube" />
-        <a href="https://youtube.com/@xzuya" target="_blank">YouTube</a>
-      </div>
-      <div class="icon-link">
-        <img src="https://img.icons8.com/color/48/tiktok--v1.png" alt="TikTok" />
-        <a href="https://tiktok.com/@xzuya" target="_blank">TikTok</a>
-      </div>
-      <div class="icon-link">
-        <img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram" />
-        <a href="https://instagram.com/xzuya" target="_blank">Instagram</a>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const scripts = {
-      script1: `-- Auto Clicker Script
-while true do
-    wait(0.1)
-    game:GetService("VirtualUser"):ClickButton1(Vector2.new())
-end`,
-      script2: `-- Key Generator Script
-function generateKey()
-    local key = ""
-    for i = 1, 16 do
-        key = key .. string.char(math.random(65, 90))
-    end
-    return key
-end
-print(generateKey())`,
-      script3: `-- Teleport Script
-local player = game.Players.LocalPlayer
-local teleportPos = Vector3.new(0, 50, 0)
-player.Character.HumanoidRootPart.CFrame = CFrame.new(teleportPos)`,
-    };
-
-    // Tabs logic
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        contents.forEach(c => c.classList.remove('active'));
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-
-    function showCode(id) {
-      const codeArea = document.getElementById('code-area');
-      codeArea.textContent = scripts[id] || 'Script not found.';
-    }
-
-    function copyCode() {
-      const codeArea = document.getElementById('code-area').textContent;
-      navigator.clipboard.writeText(codeArea).then(() => {
-        alert('Code copied to clipboard!');
-      }).catch(() => {
-        alert('Failed to copy.');
-      });
-    }
-  </script>
 </body>
 </html>
