@@ -11,10 +11,6 @@ body {
 header {
   position: relative;
   overflow: hidden;
-  background-image: url('banner.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: 100%;
   padding: 20px 50px;
   display: flex;
@@ -23,15 +19,17 @@ header {
   color: white;
   z-index: 1;
 }
-
 header::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(50px); /* Blur latar belakang */
-  background: rgba(0, 0, 0, 0.4); /* Semi transparan gelap (opsional) */
+  background-image: url('banner.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(70px); /* ini yang bikin blur */
   z-index: 0;
 }
 
