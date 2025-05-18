@@ -9,6 +9,8 @@ body {
   color: #f0f0f0;
 }
 header {
+  position: relative;
+  overflow: hidden;
   background-image: url('banner.gif');
   background-size: cover;
   background-position: center;
@@ -18,7 +20,24 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white; /* Biar teksnya tetap kelihatan */
+  color: white;
+  z-index: 1;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px); /* Blur latar belakang */
+  background: rgba(0, 0, 0, 0.4); /* Semi transparan gelap (opsional) */
+  z-index: 0;
+}
+
+header * {
+  position: relative;
+  z-index: 2;
 }
 .logo {
   color: #00cfff;
