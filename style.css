@@ -9,11 +9,16 @@ body {
   color: #f0f0f0;
 }
 header {
-  background: #1f1f1f;
-  padding: 1.5rem;
+  background-image: url('banner.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white; /* Biar teksnya tetap kelihatan */
 }
 .logo {
   color: #00cfff;
