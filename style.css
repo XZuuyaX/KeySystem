@@ -29,7 +29,7 @@ header::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(70px); /* ini yang bikin blur */
+  filter: blur(10px); /* ini yang bikin blur */
   z-index: 0;
 }
 
