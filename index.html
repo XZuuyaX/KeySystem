@@ -6,7 +6,43 @@
   <title>XZuyaX's HUB - Script & Donation Links</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll('.tab-content');
 
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Hapus semua aktif
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabs.forEach(t => t.classList.remove('active'));
+
+      // Aktifkan tab yg diklik
+      btn.classList.add('active');
+      const selectedTab = btn.getAttribute('data-tab');
+      document.getElementById(selectedTab).classList.add('active');
+    });
+  });
+
+  // Script viewer
+  const scripts = {
+    autoClicker: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_autoclicker"))()`,
+    keyGenerator: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_keygen"))()`,
+    teleport: `loadstring(game:HttpGet("https://pastebin.com/raw/xxx_teleport"))()`,
+  };
+
+  function showCode(key) {
+    const codeArea = document.getElementById("code-area");
+    codeArea.textContent = scripts[key] || "Code not found.";
+  }
+
+  function copyCode() {
+    const codeArea = document.getElementById("code-area");
+    navigator.clipboard.writeText(codeArea.textContent).then(() => {
+      alert("Code copied to clipboard!");
+    });
+  }
+</script>
+    
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
