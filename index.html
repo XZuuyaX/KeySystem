@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Generator</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+  </style>
+</head>
+<body>
+  <h1>Your Key:</h1>
+  <div id="key">Click the button to generate a key</div>
+  <button onclick="generateKey()">Generate Key</button>
+
+  <script>
+    function generateKey() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let key = "";
+      for (let i = 0; i < 4; i++) {
+        let part = "";
+        for (let j = 0; j < 4; j++) {
+          part += chars[Math.floor(Math.random() * chars.length)];
+        }
+        key += part + (i < 3 ? "-" : "");
+      }
+      document.getElementById("key").textContent = key;
+    }
+  </script>
+</body>
+</html>
