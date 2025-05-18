@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>XZuyaX's HUB Key Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XZuyaX's HUB - Link Skrip & Donasi</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,206 +11,168 @@
       color: #eee;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
     }
-
     header {
       background: #1f1f1f;
-      width: 100%;
-      padding: 20px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      padding: 1rem;
       text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      letter-spacing: 1.5px;
-    }
-
     nav {
-      margin-top: 8px;
+      display: flex;
+      background: #222;
+      justify-content: center;
     }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #eee;
-      font-size: 1.6rem;
-      vertical-align: middle;
+    nav button {
+      background: none;
+      border: none;
+      padding: 1rem 2rem;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1rem;
       transition: color 0.3s;
     }
-
-    nav a:hover {
-      color: #ff3b3f;
+    nav button.active,
+    nav button:hover {
+      color: #00cfff;
+      border-bottom: 3px solid #00cfff;
     }
-
-    nav a svg {
-      width: 28px;
-      height: 28px;
-      vertical-align: middle;
-      fill: currentColor;
-    }
-
     main {
-      margin-top: 50px;
-      background: #222;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(255, 59, 63, 0.4);
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
     }
-
-    button {
-      background-color: #ff3b3f;
-      border: none;
-      border-radius: 6px;
-      padding: 14px 28px;
-      font-size: 20px;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    .tab-content {
+      display: none;
     }
-
-    button:disabled {
-      background-color: #aa2a2c;
-      cursor: not-allowed;
+    .tab-content.active {
+      display: block;
     }
-
-    button:hover:not(:disabled) {
-      background-color: #d32f31;
-    }
-
-    #status {
-      margin-top: 20px;
-      font-size: 17px;
-      color: #7ef4a1;
-      min-height: 28px;
-    }
-
-    #timer {
-      margin-top: 12px;
-      color: #f77;
-      font-weight: 600;
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 20px;
-      text-align: center;
+    /* Style untuk kode skrip */
+    pre {
+      background: #333;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      user-select: all;
       font-size: 0.9rem;
-      color: #666;
-      background: #1f1f1f;
-      width: 100%;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
+    }
+    .copy-btn {
+      background: #00cfff;
+      border: none;
+      color: black;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .links-list a {
+      color: #00cfff;
+      text-decoration: none;
+      display: block;
+      margin: 0.3rem 0;
+      word-break: break-all;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>XZuyaX's HUB Key Generator</h1>
-    <nav>
-      <a href="https://youtube.com/@xzuyax-d7n" target="_blank" aria-label="YouTube Channel" title="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.998 2.998 0 0 0-2.11-2.115C19.629 3.5 12 3.5 12 3.5s-7.629 0-9.388.57a2.998 2.998 0 0 0-2.11 2.115A31.096 31.096 0 0 0 0 12a31.096 31.096 0 0 0 .502 5.814 2.998 2.998 0 0 0 2.11 2.115c1.759.57 9.388.57 9.388.57s7.629 0 9.388-.57a2.998 2.998 0 0 0 2.11-2.115A31.096 31.096 0 0 0 24 12a31.096 31.096 0 0 0-.502-5.814zM9.75 15.5v-7l6 3.5-6 3.5z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@zuyaxrawr?_t=ZS-8wS1GJza4Xp&_r=1" target="_blank" aria-label="TikTok Profile" title="TikTok">
-        <svg viewBox="0 0 24 24"><path d="M12 2v10.87a3.494 3.494 0 0 1-3.5-3.5v-7.37H6v14.5a3.5 3.5 0 1 0 3.5 3.5v-9.12A4.494 4.494 0 0 0 12 16v-14z"/></svg>
-      </a>
-    </nav>
-  </header>
+  <header>XZuyaX's HUB</header>
+  <nav>
+    <button class="tab-btn active" data-tab="skrip">Link Skrip</button>
+    <button class="tab-btn" data-tab="donasi">Link Donasi</button>
+    <button class="tab-btn" data-tab="sosmed">Link Sosial Media</button>
+  </nav>
 
   <main>
-    <button id="generateBtn">Copy Key</button>
-    <div id="status"></div>
-    <div id="timer"></div>
+    <!-- Tab Skrip -->
+    <section id="skrip" class="tab-content active">
+      <h2>List Skrip</h2>
+      <div class="links-list">
+        <button onclick="showCode('script1')">Skrip Auto Clicker</button><br />
+        <button onclick="showCode('script2')">Skrip Key Generator</button><br />
+        <button onclick="showCode('script3')">Skrip Teleport</button>
+      </div>
+
+      <div id="code-display" style="margin-top: 1rem;">
+        <h3>Kode Skrip</h3>
+        <pre id="code-area">Klik tombol skrip di atas untuk melihat kode.</pre>
+        <button class="copy-btn" onclick="copyCode()">Copy Kode</button>
+      </div>
+    </section>
+
+    <!-- Tab Donasi -->
+    <section id="donasi" class="tab-content">
+      <h2>Link Donasi</h2>
+      <ul>
+        <li><a href="https://saweria.co/xzuya" target="_blank">Saweria</a></li>
+        <li><a href="https://trakteer.id/xzuya" target="_blank">Trakteer</a></li>
+        <li><a href="https://paypal.me/xzuya" target="_blank">PayPal</a></li>
+      </ul>
+    </section>
+
+    <!-- Tab Sosial Media -->
+    <section id="sosmed" class="tab-content">
+      <h2>Link Sosial Media</h2>
+      <ul>
+        <li><a href="https://youtube.com/@xzuya" target="_blank">YouTube</a></li>
+        <li><a href="https://tiktok.com/@xzuya" target="_blank">TikTok</a></li>
+        <li><a href="https://instagram.com/xzuya" target="_blank">Instagram</a></li>
+      </ul>
+    </section>
   </main>
 
-  <footer>
-    &copy; 2025 XZuyaX. All Rights Reserved.
-  </footer>
-
   <script>
-    const EXPIRATION_MINUTES = 10;
-    const generateBtn = document.getElementById("generateBtn");
-    const statusText = document.getElementById("status");
-    const timerText = document.getElementById("timer");
+    // Data kode skrip
+    const scripts = {
+      script1: `-- Auto Clicker Script Example
+while true do
+    wait(0.1)
+    game:GetService("VirtualUser"):ClickButton1(Vector2.new())
+end`,
+      script2: `-- Key Generator Script Example
+function generateKey()
+    local key = ""
+    for i=1,16 do
+        key = key .. string.char(math.random(65,90))
+    end
+    return key
+end
+print(generateKey())`,
+      script3: `-- Teleport Script Example
+local player = game.Players.LocalPlayer
+local teleportPos = Vector3.new(0, 50, 0)
+player.Character.HumanoidRootPart.CFrame = CFrame.new(teleportPos)`,
+    };
 
-    let timerInterval = null;
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
 
-    function generateKey() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let key = "";
-      for (let i = 0; i < 4; i++) {
-        let part = "";
-        for (let j = 0; j < 4; j++) {
-          part += chars[Math.floor(Math.random() * chars.length)];
-        }
-        key += part + (i < 3 ? "-" : "");
-      }
-      return key;
-    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
-    function disableButtonFor(durationMs) {
-      generateBtn.disabled = true;
-      const expiresAt = Date.now() + durationMs;
-      localStorage.setItem("keyExpiresAt", expiresAt.toString());
-      startCountdown(expiresAt);
-    }
-
-    function startCountdown(expiresAt) {
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        const now = Date.now();
-        const diff = expiresAt - now;
-
-        if (diff <= 0) {
-          clearInterval(timerInterval);
-          timerText.innerText = "Key expired. You can generate a new one.";
-          generateBtn.disabled = false;
-          localStorage.removeItem("generatedKey");
-          localStorage.removeItem("keyExpiresAt");
-          statusText.innerText = "";
-        } else {
-          const minutes = Math.floor(diff / 60000);
-          const seconds = Math.floor((diff % 60000) / 1000);
-          timerText.innerText = `Key valid for: ${minutes}m ${seconds}s`;
-        }
-      }, 1000);
-    }
-
-    generateBtn.addEventListener("click", () => {
-      const now = Date.now();
-      const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
-
-      if (expiresAt && now < expiresAt) {
-        statusText.innerText = "Please wait until your current key expires.";
-        return;
-      }
-
-      const key = generateKey();
-      navigator.clipboard.writeText(key).then(() => {
-        statusText.innerText = `Key copied: ${key}`;
-        localStorage.setItem("generatedKey", key);
-        disableButtonFor(EXPIRATION_MINUTES * 60000);
-      }).catch(() => {
-        statusText.innerText = "Failed to copy the key.";
+        contents.forEach(c => c.classList.remove('active'));
+        document.getElementById(tab.dataset.tab).classList.add('active');
       });
     });
 
-    // On page load
-    const savedKey = localStorage.getItem("generatedKey");
-    const savedExpires = parseInt(localStorage.getItem("keyExpiresAt"), 10);
-    const now = Date.now();
+    // Show kode skrip sesuai tombol klik
+    function showCode(id) {
+      const codeArea = document.getElementById('code-area');
+      codeArea.textContent = scripts[id] || 'Kode tidak ditemukan.';
+    }
 
-    if (savedKey && savedExpires && now < savedExpires) {
-      generateBtn.disabled = true;
-      statusText.innerText = `Key already copied: ${savedKey}`;
-      startCountdown(savedExpires);
+    // Copy kode ke clipboard
+    function copyCode() {
+      const codeArea = document.getElementById('code-area').textContent;
+      navigator.clipboard.writeText(codeArea).then(() => {
+        alert('Kode berhasil disalin ke clipboard!');
+      }).catch(() => {
+        alert('Gagal menyalin kode.');
+      });
     }
   </script>
 </body>
