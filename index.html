@@ -2,27 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Copy Key System</title>
+  <title>Key Generator</title>
   <style>
-    body { font-family: Arial; text-align: center; padding-top: 100px; }
-    #copyBtn {
+    body { font-family: Arial, sans-serif; text-align: center; padding-top: 80px; }
+    button {
       padding: 12px 24px;
       font-size: 18px;
       cursor: pointer;
     }
     #status {
       margin-top: 20px;
-      font-weight: bold;
+      font-size: 16px;
       color: green;
+    }
+    #timer {
+      margin-top: 10px;
+      color: red;
     }
   </style>
 </head>
 <body>
   <h1>Key Generator</h1>
-  <button id="copyBtn">Copy Key</button>
+  <button id="generateBtn">Copy Key</button>
   <div id="status"></div>
+  <div id="timer"></div>
 
   <script>
+    const EXPIRATION_MINUTES = 10;
+    const generateBtn = document.getElementById("generateBtn");
+    const statusText = document.getElementById("status");
+    const timerText = document.getElementById("timer");
+
     function generateKey() {
       const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
       let key = "";
@@ -36,14 +46,60 @@
       return key;
     }
 
-    document.getElementById("copyBtn").addEventListener("click", () => {
+    function updateTimer() {
+      const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
+      const now = Date.now();
+      const diff = expiresAt - now;
+
+      if (diff <= 0) {
+        timerText.innerText = "Key expired. You can generate a new one.";
+        localStorage.removeItem("generatedKey");
+        localStorage.removeItem("keyExpiresAt");
+        generateBtn.disabled = false;
+        statusText.innerText = "";
+      } else {
+        const minutes = Math.floor(diff / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        timerText.innerText = `Key valid for: ${minutes}m ${seconds}s`;
+      }
+    }
+
+    function startCountdown() {
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    generateBtn.addEventListener("click", () => {
+      const now = Date.now();
+      const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
+
+      if (expiresAt && now < expiresAt) {
+        statusText.innerText = "You have already generated a key.";
+        return;
+      }
+
       const key = generateKey();
       navigator.clipboard.writeText(key).then(() => {
-        document.getElementById("status").innerText = `Key copied: ${key}`;
-      }).catch(() => {
-        document.getElementById("status").innerText = "Gagal copy key.";
+        statusText.innerText = `Key copied: ${key}`;
+        const expireTime = now + EXPIRATION_MINUTES * 60000;
+        localStorage.setItem("generatedKey", key);
+        localStorage.setItem("keyExpiresAt", expireTime.toString());
+        generateBtn.disabled = true;
+        updateTimer();
       });
     });
+
+    // On page load: check if already has key
+    const existingKey = localStorage.getItem("generatedKey");
+    const expiresAt = parseInt(localStorage.getItem("keyExpiresAt"), 10);
+    if (existingKey && Date.now() < expiresAt) {
+      statusText.innerText = `Key already copied: ${existingKey}`;
+      generateBtn.disabled = true;
+      startCountdown();
+    } else {
+      localStorage.removeItem("generatedKey");
+      localStorage.removeItem("keyExpiresAt");
+    }
   </script>
 </body>
 </html>
