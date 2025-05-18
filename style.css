@@ -75,3 +75,9 @@ nav a:hover {
 .btn:hover {
   background: #00aacc;
 }
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 60px; /* jarak dari header */
+}
