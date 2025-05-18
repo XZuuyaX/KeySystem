@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Key Generator</title>
+  <title>Copy Key System</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    body { font-family: Arial; text-align: center; padding-top: 100px; }
+    #copyBtn {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
   </style>
 </head>
 <body>
-  <h1>Your Key:</h1>
-  <div id="key">Click the button to generate a key</div>
-  <button onclick="generateKey()">Generate Key</button>
+  <h1>Key Generator</h1>
+  <button id="copyBtn">Copy Key</button>
+  <div id="status"></div>
 
   <script>
     function generateKey() {
@@ -23,8 +33,17 @@
         }
         key += part + (i < 3 ? "-" : "");
       }
-      document.getElementById("key").textContent = key;
+      return key;
     }
+
+    document.getElementById("copyBtn").addEventListener("click", () => {
+      const key = generateKey();
+      navigator.clipboard.writeText(key).then(() => {
+        document.getElementById("status").innerText = `Key copied: ${key}`;
+      }).catch(() => {
+        document.getElementById("status").innerText = "Gagal copy key.";
+      });
+    });
   </script>
 </body>
 </html>
